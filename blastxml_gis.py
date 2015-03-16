@@ -8,6 +8,6 @@ def get_gis(blast_file_handle):
 
 
 if __name__=='__main__':
-    with open('blastx_results/blast_IIKE3SZ08JLAXS.xml') as f:
+    with open(sys.argv[1]) as f:
         print '\n'.join(get_gis(f))
 
