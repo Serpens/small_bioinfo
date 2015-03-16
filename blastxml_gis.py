@@ -8,6 +8,8 @@ def get_gis(blast_file_handle):
 
 
 if __name__=='__main__':
-    with open(sys.argv[1]) as f:
-        print '\n'.join(get_gis(f))
+    for i in sys.argv[1:]:
+        with open(i) as f:
+            print i
+            print '\n'.join(get_gis(f))
 
