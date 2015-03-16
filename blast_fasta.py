@@ -19,6 +19,6 @@ if __name__=='__main__':
     for seq in seqs:
         blast_xml_str = run_blast(seq)
         with open(seq.id + '_blast.xml', 'w') as f:
-            f.write(blast_xml)
+            f.write(blast_xml_str)
         sleep(2)     # I don't want to get banned by NCBI
 
