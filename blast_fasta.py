@@ -37,7 +37,7 @@ if __name__=='__main__':
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
     for seq in seqs:
-        blast_xml_str = run_blast(seq)
+        blast_xml_str = run_blast(seq, blast_type)
         print 'Running BLAST for ' + seq.id +  '... ',
         with open(os.path.join(out_dir, out_prefix + seq.id + '.xml'), 'w') as f:
             f.write(blast_xml_str)
