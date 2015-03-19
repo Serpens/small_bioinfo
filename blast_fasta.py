@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os, sys
-import getopt
 from Bio import SeqIO
 from Bio.Blast import NCBIWWW
 from time import sleep
+from helpers import parse_fasta, get_opts
 
 def usage():
     print """Usage: blast_fasta.py [OPTIONS] seqs.fasta
@@ -13,18 +13,13 @@ def usage():
         -p out_prefix     prefix for output file names, default: blast_
     """
 
-def parse_fasta(fasta_path):
-    with open(fasta_path) as f:
-        seqs = [i for i in SeqIO.parse(f, 'fasta')]
-    return seqs
-
 def run_blast(seq, blast_type='blastn'):
     return NCBIWWW.qblast(blast_type, 'nr', seq.format('fasta')).getvalue()
 
 
 if __name__=='__main__':
     try:
-        opts = getopt.getopt(sys.argv[1:], 't:o:p:')
+        opts = get_opts(sys.argv[1:], 't:o:p:')
         fasta_path = opts[1][0]
         opts = dict(opts[0])
     except:
