@@ -17,6 +17,5 @@ if __name__=='__main__':
     seqs = parse_fasta(opts['-i'])
     seqs = [cut_from_left(i, to_find=opts.get('-s', 'ATG')) for i in seqs]
     seqs = [i for i in seqs if i is not None]
-    with open(opts['-o'], 'w') as f:
-        SeqIO.write(seqs, f, 'fasta')
+    write_seqs(seqs, opts['-o'])
 
