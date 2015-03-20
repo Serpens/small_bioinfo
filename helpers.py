@@ -16,3 +16,7 @@ def get_opts(argv, opt_string, long_opt_string=[]):
     opts[0] = dict(opts[0])
     return opts
 
+def write_seqs(seqs, fasta_path):
+    with open(fasta_path, 'w') as f:
+        SeqIO.write(seqs, f, 'fasta')
+
