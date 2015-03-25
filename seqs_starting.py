@@ -2,7 +2,7 @@
 import sys
 from getopt import getopt
 from Bio import SeqIO
-from helpers import parse_fasta, get_opts
+from helpers import parse_fasta, get_opts, write_seqs
 
 def cut_from_left(seq, to_find='ATG'):
     start = seq.seq.find(to_find)
