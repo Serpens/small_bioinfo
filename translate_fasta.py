@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os, sys
 import getopt
+from Bio import SeqIO
 from helpers import parse_fasta, write_seqs
 
 
