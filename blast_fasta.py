@@ -14,7 +14,14 @@ def usage():
     """
 
 def run_blast(seq, blast_type='blastn'):
-    return NCBIWWW.qblast(blast_type, 'nr', seq.format('fasta')).getvalue()
+    delay = 2
+    while True:
+        try:
+            result = NCBIWWW.qblast(blast_type, 'nr', seq.format('fasta')).getvalue()
+            sleep(delay)
+            return result
+        except urllib2.HTTPError:       # something went wrong, increase delay and try again
+            delay *= 2
 
 
 if __name__=='__main__':
@@ -37,5 +44,4 @@ if __name__=='__main__':
         with open(os.path.join(out_dir, out_prefix + seq.id + '.xml'), 'w') as f:
             f.write(blast_xml_str)
         print 'completed'
-        sleep(2)     # I don't want to get banned by NCBI
 
