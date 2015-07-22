@@ -14,7 +14,7 @@ if __name__ == '__main__':
         fasta_path = sys.argv[2]
         qual_path = sys.argv[3]
     else:
-        fasta_path = fastq_path.split('.')[0] + '.fasta'
-        qual_path = fastq_path.split('.')[0] + '.qual'
+        fasta_path = fastq_path.rstrip('.fastq') + '.fasta'
+        qual_path = fastq_path.rstrip('.fastq') + '.qual'
     convert_fastq(fastq_path, fasta_path, qual_path)
 
